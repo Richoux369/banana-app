@@ -1,0 +1,14 @@
+# Flutter/Dart generated files
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+pubspec.lock
+.idea/
+
+# Build folders
+# build/
+android/app/build/
+ios/Pods/
+macos/Pods/
+web/.dart_tool/
