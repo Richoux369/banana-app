@@ -1,0 +1,32 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # mainブランチが更新されたときに実行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # GitHubの仮想マシンで動作
+
+    steps:
+    # リポジトリをチェックアウト（ダウンロード）
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Flutterをインストール
+    - name: Install Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: 'stable'
+
+    # Webアプリをビルド
+    - name: Build Flutter web app
+      run: flutter build web
+
+    # build/webをGitHub Pagesにデプロイ
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: build/web
